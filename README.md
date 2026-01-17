@@ -1,47 +1,81 @@
-# code-buddy
+<p align="center">
+  <span
+    style="
+      display: inline-block;
+      padding: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #130a9e, #1ad0f4);
+    "
+  >
+    <img
+      src="./assets/pluginIcon.png"
+      alt="Code Buddy icon"
+      width="160"
+      height="160"
+      style="border-radius: 50%; display: block;"
+    />
+  </span>
+</p>
 
-![Build](https://github.com/L00kAhead/code-buddy/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
+<h1 align="center">Code Buddy</h1>
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Get familiar with the [template documentation][template].
-- [ ] Adjust the [pluginGroup](./gradle.properties) and [pluginName](./gradle.properties), as well as the [id](./src/main/resources/META-INF/plugin.xml) and [sources package](./src/main/kotlin).
-- [ ] Adjust the plugin description in `README` (see [Tips][docs:plugin-description])
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html?from=IJPluginTemplate).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the `MARKETPLACE_ID` in the above README badges. You can obtain it once the plugin is published to JetBrains Marketplace.
-- [ ] Set the [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate) related [secrets](https://github.com/JetBrains/intellij-platform-plugin-template#environment-variables).
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html?from=IJPluginTemplate).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
-- [ ] Configure the [CODECOV_TOKEN](https://docs.codecov.com/docs/quick-start) secret for automated test coverage reports on PRs
+[//]: # (<p align="center">)
+
+[//]: # (  <img src="https://github.com/L00kAhead/code-buddy/actions/workflows/build.yml/badge.svg" alt="Build" />)
+
+[//]: # (  <a href="https://plugins.jetbrains.com/plugin/MARKETPLACE_ID">)
+
+[//]: # (    <img src="https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg" alt="Version" />)
+
+[//]: # (  </a>)
+
+[//]: # (  <a href="https://plugins.jetbrains.com/plugin/MARKETPLACE_ID">)
+
+[//]: # (    <img src="https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg" alt="Downloads" />)
+
+[//]: # (  </a>)
+
+[//]: # (</p>)
+
+Code Buddy adds a small animated cat companion to your JetBrains IDE. The cat walks calmly along the bottom of the editor, adding a bit of personality while staying out of the way. The plugin is lightweight and works across all JetBrains IDEs.
+
+---
+
+## Features
+
+- Animated cat companion rendered as an overlay inside the IDE
+- Smooth frame based walking animation
+- Automatically appears when a project is opened
+- Tool window controls to pause or resume the animation
+- Option to completely enable or disable the cat overlay
+- Designed to be subtle and distraction free
+
+---
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+Code Buddy adds a small animated cat companion to your JetBrains IDE.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+The cat walks along the bottom of the editor window and can be paused, resumed, or hidden entirely using the Code Buddy tool window. The plugin is designed to be lightweight and distraction free, adding a small amount of personality to the IDE without interfering with normal development.
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
+Code Buddy works across all JetBrains IDEs and starts automatically when a project is opened.
 <!-- Plugin description end -->
+
+---
 
 ## Installation
 
-- Using the IDE built-in plugin system:
-
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "code-buddy"</kbd> >
+- `Using the IDE built-in plugin system`:
+  - <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "code-buddy"</kbd> >
   <kbd>Install</kbd>
 
-- Using JetBrains Marketplace:
+- `Using JetBrains Marketplace`:
+    - Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
+    - You can also download the [latest release](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID/versions) from JetBrains Marketplace and install it manually using
+      <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
-  Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
+- `Manually`:
 
-  You can also download the [latest release](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID/versions) from JetBrains Marketplace and install it manually using
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
-
-- Manually:
-
-  Download the [latest release](https://github.com/L00kAhead/code-buddy/releases/latest) and install it manually using
+  - Download the [latest release](https://github.com/L00kAhead/code-buddy/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 
@@ -50,3 +84,13 @@ Plugin based on the [IntelliJ Platform Plugin Template][template].
 
 [template]: https://github.com/JetBrains/intellij-platform-plugin-template
 [docs:plugin-description]: https://plugins.jetbrains.com/docs/intellij/plugin-user-experience.html#plugin-description-and-presentation
+
+## Credits
+
+Cat animation sprites by [**FrolicForge**](https://frolicforge.itch.io)
+
+## License
+
+Copyright © 2026 Himanshu Soni
+
+This project is licensed under the Apache License, Version 2.0.
