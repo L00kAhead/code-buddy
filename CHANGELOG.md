@@ -2,9 +2,15 @@
 
 # code-buddy Changelog
 
+## [Unreleased]
+### Added
+- Ongoing improvements and refinements
+
+---
+
 ## [1.0.0] - 2026-01-17
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- Initial scaffold created from the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 - Animated cat companion that walks along the bottom of the IDE window
 - Smooth frame based animation using individual PNG frames
 - Project level service to manage pet state and lifecycle
