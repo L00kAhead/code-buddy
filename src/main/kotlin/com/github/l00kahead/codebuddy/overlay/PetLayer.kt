@@ -2,6 +2,8 @@ package com.github.l00kahead.codebuddy.overlay
 
 import com.github.l00kahead.codebuddy.core.CodeBuddyProjectService
 import java.awt.*
+import java.awt.event.ComponentAdapter
+import java.awt.event.ComponentEvent
 import javax.swing.JComponent
 import javax.swing.Timer
 
@@ -19,19 +21,20 @@ class PetLayer(
     private val petSize = 96
     private val groundOffset = 12
 
+    private var container: JComponent? = null
+
     init {
         isOpaque = false
+        layout = null
         service.petLayer = this
 
         Timer(16) {
             if (!service.enabled || !service.running) return@Timer
 
             tick++
-
-            // Movement speed (stable)
             x += service.speed * direction
 
-            val maxX = width - petSize
+            val maxX = (container?.width ?: width) - petSize
             if (x <= 0) {
                 x = 0.0
                 direction = 1
@@ -40,13 +43,23 @@ class PetLayer(
                 direction = -1
             }
 
-            // Animation speed: ~12 FPS
             if (tick % 5 == 0) {
                 frameIndex = (frameIndex + 1) % frames.size
             }
 
             repaint()
         }.start()
+    }
+
+    fun attach(container: JComponent) {
+        this.container = container
+        setBounds(0, 0, container.width, container.height)
+
+        container.addComponentListener(object : ComponentAdapter() {
+            override fun componentResized(e: ComponentEvent) {
+                setBounds(0, 0, container.width, container.height)
+            }
+        })
     }
 
     override fun paintComponent(g: Graphics) {
@@ -57,20 +70,13 @@ class PetLayer(
         )
 
         val img = frames[frameIndex]
-        val y = height - petSize - groundOffset
+        val y = (container?.height ?: height) - petSize - groundOffset
         val drawX = x.toInt()
 
         if (direction == 1) {
             g2.drawImage(img, drawX, y, petSize, petSize, null)
         } else {
-            g2.drawImage(
-                img,
-                drawX + petSize,
-                y,
-                -petSize,
-                petSize,
-                null
-            )
+            g2.drawImage(img, drawX + petSize, y, -petSize, petSize, null)
         }
     }
 }
