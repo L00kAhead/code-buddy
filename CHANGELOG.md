@@ -22,4 +22,6 @@
 - N/A
 
 ### Fixed
-- N/A
+- Corrected cat overlay positioning to stay aligned with the bottom of the IDE
+- Fixed edge to edge walking behavior when resizing the IDE window
+- Resolved lifecycle cleanup warnings when closing a project

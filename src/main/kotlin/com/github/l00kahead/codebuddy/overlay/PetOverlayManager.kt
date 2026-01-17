@@ -1,40 +1,33 @@
 package com.github.l00kahead.codebuddy.overlay
 
 import com.github.l00kahead.codebuddy.core.CodeBuddyProjectService
+import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.WindowManager
-import javax.swing.JComponent
-import com.intellij.openapi.components.service
+import javax.swing.JLayeredPane
 
 object PetOverlayManager {
 
     fun attach(project: Project) {
         val service = project.service<CodeBuddyProjectService>()
-
         if (service.petLayer != null) return
 
         val frame = WindowManager.getInstance().getFrame(project) ?: return
-        val rootPane = frame.rootPane
-        val glassPane = rootPane.glassPane as JComponent
-
-        glassPane.layout = null
-        glassPane.isVisible = true
-        glassPane.isOpaque = false
-        glassPane.isEnabled = false
+        val layeredPane = frame.rootPane.layeredPane
 
         val petLayer = PetLayer(service)
+        layeredPane.add(petLayer, JLayeredPane.POPUP_LAYER)
+        petLayer.attach(layeredPane)
+    }
+    @Suppress("unused")
+    fun detach(project: Project) {
+        val service = project.service<CodeBuddyProjectService>()
+        val petLayer = service.petLayer ?: return
 
-        fun resize() {
-            val insets = rootPane.insets
-            petLayer.setBounds(
-                0,
-                insets.top,
-                rootPane.width,
-                rootPane.height - insets.top
-            )
-        }
+        val parent = petLayer.parent
+        parent?.remove(petLayer)
+        parent?.repaint()
 
-        resize()
-        glassPane.add(petLayer)
+        service.petLayer = null
     }
 }
