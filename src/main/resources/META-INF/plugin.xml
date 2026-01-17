@@ -5,7 +5,6 @@
     <vendor>Himanshu Soni</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-    <resource-bundle>messages.CodeBuddyBundle</resource-bundle>
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity
                 implementation="com.github.l00kahead.codebuddy.lifecycle.CodeBuddyStartupActivity"/>
