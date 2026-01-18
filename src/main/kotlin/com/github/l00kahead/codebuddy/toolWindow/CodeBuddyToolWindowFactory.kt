@@ -4,55 +4,108 @@ import com.github.l00kahead.codebuddy.core.CodeBuddyProjectService
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
-import javax.swing.Box
-import javax.swing.BoxLayout
+import com.intellij.ui.dsl.builder.AlignX
+import com.intellij.ui.dsl.builder.BottomGap
+import com.intellij.ui.dsl.builder.Cell
+import com.intellij.ui.dsl.builder.panel
+import com.intellij.util.ui.JBUI
+import java.awt.Font
 import javax.swing.JButton
 import javax.swing.JLabel
-import javax.swing.JPanel
 
 class CodeBuddyToolWindowFactory : ToolWindowFactory {
 
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         val service = project.getService(CodeBuddyProjectService::class.java)
 
-        val panel = JPanel()
-        panel.layout = BoxLayout(panel, BoxLayout.Y_AXIS)
+        lateinit var statusLabel: Cell<JLabel>
+        lateinit var runButton: Cell<JButton>
+        lateinit var enableButton: Cell<JButton>
 
-        val title = JLabel("Code Buddy 🐱")
+        val root = panel {
+            row {
+                label("Code Buddy").applyToComponent {
+                    font = font.deriveFont(Font.BOLD)
+                }
+            }
 
-        // Button 1: Walk / Pause
-        val walkToggle = JButton()
-        fun updateWalkText() {
-            walkToggle.text = if (service.running) "Pause ⏸" else "Resume ▶"
+            row {
+                statusLabel = label("")
+            }.bottomGap(BottomGap.MEDIUM)
+
+            row {
+                runButton = button("") {
+                    service.toggleRunning()
+                    refresh(service, statusLabel, runButton, enableButton)
+                }.align(AlignX.FILL)
+            }
+
+            row {
+                enableButton = button("") {
+                    service.toggleEnabled()
+                    if (!service.enabled) {
+                        service.running = false
+                    }
+                    refresh(service, statusLabel, runButton, enableButton)
+                }.align(AlignX.FILL)
+            }
+        }.apply {
+            border = JBUI.Borders.empty(12)
         }
-        updateWalkText()
-
-        walkToggle.addActionListener {
-            service.toggleRunning()
-            updateWalkText()
-        }
-
-        // Button 2: Enable / Disable
-        val enableToggle = JButton()
-        fun updateEnableText() {
-            enableToggle.text = if (service.enabled) "Disable Cat" else "Enable Cat"
-        }
-        updateEnableText()
-
-        enableToggle.addActionListener {
-            service.toggleEnabled()
-            updateEnableText()
-        }
-
-        panel.add(title)
-        panel.add(Box.createVerticalStrut(12))
-        panel.add(walkToggle)
-        panel.add(Box.createVerticalStrut(8))
-        panel.add(enableToggle)
 
         val content = toolWindow.contentManager.factory
-            .createContent(panel, null, false)
+            .createContent(root, null, false)
 
         toolWindow.contentManager.addContent(content)
+
+        refresh(service, statusLabel, runButton, enableButton)
+    }
+
+    private fun refresh(
+        service: CodeBuddyProjectService,
+        status: Cell<JLabel>,
+        runButton: Cell<JButton>,
+        enableButton: Cell<JButton>
+    ) {
+        when {
+            !service.enabled -> {
+                status.component.text = "Disabled"
+
+                runButton.component.isEnabled = false
+                runButton.component.text = "Pause"
+
+                enableButton.component.text = "Enable"
+            }
+
+            service.running -> {
+                status.component.text = "Running"
+
+                runButton.component.isEnabled = true
+                runButton.component.text = "Pause"
+
+                enableButton.component.text = "Disable"
+            }
+
+            else -> {
+                status.component.text = "Paused"
+
+                runButton.component.isEnabled = true
+                runButton.component.text = "Resume"
+
+                enableButton.component.text = "Disable"
+            }
+        }
+
+        runButton.component.preferredSize =
+            JBUI.size(runButton.component.preferredSize.width, 32)
+
+        enableButton.component.preferredSize =
+            JBUI.size(enableButton.component.preferredSize.width, 32)
+
+        runButton.component.maximumSize =
+            JBUI.size(Int.MAX_VALUE, 32)
+
+        enableButton.component.maximumSize =
+            JBUI.size(Int.MAX_VALUE, 32)
     }
 }

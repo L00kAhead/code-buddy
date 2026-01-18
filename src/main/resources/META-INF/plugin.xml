@@ -12,6 +12,7 @@
                 id="Code Buddy"
                 factoryClass="com.github.l00kahead.codebuddy.toolWindow.CodeBuddyToolWindowFactory"
                 icon="/icons/codeBuddyTool.svg"
+                anchor="right"
         />
     </extensions>
 </idea-plugin>
