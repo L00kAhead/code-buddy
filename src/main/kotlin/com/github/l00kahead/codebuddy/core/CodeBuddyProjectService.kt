@@ -1,16 +1,15 @@
 package com.github.l00kahead.codebuddy.core
 
 import com.intellij.openapi.components.Service
-import com.intellij.openapi.project.Project
 import com.github.l00kahead.codebuddy.overlay.PetLayer
 
 @Service(Service.Level.PROJECT)
-class CodeBuddyProjectService(val project: Project) {
+class CodeBuddyProjectService {
 
     var enabled: Boolean = true
         set(value) {
             field = value
-            petLayer?.setVisible(value)
+            petLayer?.isVisible = value
         }
 
     var running: Boolean = true
