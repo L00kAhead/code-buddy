@@ -1,54 +1,43 @@
 <p align="center">
-  <span
-    style="
-      display: inline-block;
-      padding: 24px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #130a9e, #1ad0f4);
-    "
-  >
-    <img
-      src="./assets/pluginIcon.png"
-      alt="Code Buddy icon"
-      width="160"
-      height="160"
-      style="border-radius: 50%; display: block;"
-    />
-  </span>
+  <img src="./assets/pluginIcon.png" alt="Code Buddy icon" width="160" height="160" />
 </p>
+
+---
 
 <h1 align="center">Code Buddy</h1>
 
-[//]: # (<p align="center">)
+[//]: # (![Build]&#40;https://github.com/L00kAhead/code-buddy/workflows/Build/badge.svg&#41;)
 
-[//]: # (  <img src="https://github.com/L00kAhead/code-buddy/actions/workflows/build.yml/badge.svg" alt="Build" />)
+[//]: # ([![Version]&#40;https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg&#41;]&#40;https://plugins.jetbrains.com/plugin/MARKETPLACE_ID&#41;)
 
-[//]: # (  <a href="https://plugins.jetbrains.com/plugin/MARKETPLACE_ID">)
+[//]: # ([![Downloads]&#40;https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg&#41;]&#40;https://plugins.jetbrains.com/plugin/MARKETPLACE_ID&#41;)
 
-[//]: # (    <img src="https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg" alt="Version" />)
-
-[//]: # (  </a>)
-
-[//]: # (  <a href="https://plugins.jetbrains.com/plugin/MARKETPLACE_ID">)
-
-[//]: # (    <img src="https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg" alt="Downloads" />)
-
-[//]: # (  </a>)
-
-[//]: # (</p>)
-
-Code Buddy adds a small animated cat companion to your JetBrains IDE. The cat walks calmly along the bottom of the editor, adding a bit of personality while staying out of the way. The plugin is lightweight and works across all JetBrains IDEs.
+Code Buddy adds a small animated cat companion to JetBrains IDEs.
+The cat walks along the bottom of the editor and can be paused or disabled at any time.
+The plugin is lightweight and runs quietly in the background.
 
 ---
 
 ## Features
 
 - Animated cat companion rendered as an overlay inside the IDE
-- Smooth frame based walking animation
+- Smooth walking animation
 - Automatically appears when a project is opened
 - Tool window controls to pause or resume the animation
 - Option to completely enable or disable the cat overlay
 - Designed to be subtle and distraction free
+
+---
+## Screenshots
+The screenshots below show Code Buddy running in light and dark themes, along with the tool window controls.
+
+![Cat walking along the editor bottom_dark](assets/screenshots/darkModePluginRun.png)
+![Cat walking along the editor bottom_dark](assets/screenshots/lightModePluginRun.png)
+
+![Code Buddy tool window](assets/screenshots/darkModePluginToolWindow.png)
+![Code Buddy tool window](assets/screenshots/lightModePluginToolWindow.png)
+
+[Watch the demo video](assets/video/pluginDemoVideo.mp4)
 
 ---
 
@@ -65,7 +54,7 @@ Code Buddy works across all JetBrains IDEs and starts automatically when a proje
 ## Installation
 
 - `Using the IDE built-in plugin system`:
-  - <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "code-buddy"</kbd> >
+  - <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Code Buddy"</kbd> >
   <kbd>Install</kbd>
 
 - `Using JetBrains Marketplace`:
@@ -78,19 +67,27 @@ Code Buddy works across all JetBrains IDEs and starts automatically when a proje
   - Download the [latest release](https://github.com/L00kAhead/code-buddy/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
+---
+
+## Changelog
+See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes.
 
 ---
-Plugin based on the [IntelliJ Platform Plugin Template][template].
-
-[template]: https://github.com/JetBrains/intellij-platform-plugin-template
-[docs:plugin-description]: https://plugins.jetbrains.com/docs/intellij/plugin-user-experience.html#plugin-description-and-presentation
-
 ## Credits
-
 Cat animation sprites by [**FrolicForge**](https://frolicforge.itch.io)
+
+---
 
 ## License
 
 Copyright © 2026 Himanshu Soni
 
 This project is licensed under the Apache License, Version 2.0.
+
+---
+
+
+Plugin based on the [IntelliJ Platform Plugin Template][template].
+
+[template]: https://github.com/JetBrains/intellij-platform-plugin-template
+[docs:plugin-description]: https://plugins.jetbrains.com/docs/intellij/plugin-user-experience.html#plugin-description-and-presentation
