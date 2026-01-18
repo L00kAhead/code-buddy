@@ -37,7 +37,9 @@ The screenshots below show Code Buddy running in light and dark themes, along wi
 ![Code Buddy tool window](assets/screenshots/darkModePluginToolWindow.png)
 ![Code Buddy tool window](assets/screenshots/lightModePluginToolWindow.png)
 
-[Watch the demo video](assets/video/pluginDemoVideo.mp4)
+[Watch the demo video](https://github.com/user-attachments/assets/18f97073-851d-4009-bfe7-a1981ac28339)
+
+
 
 ---
 
