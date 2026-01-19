@@ -2,14 +2,14 @@
     <id>com.github.l00kahead.codebuddy</id>
     <name>Code Buddy</name>
 
-    <vendor>Himanshu Soni</vendor>
+    <vendor url="https://github.com/l00kahead">Himanshu Soni</vendor>
 
     <depends>com.intellij.modules.platform</depends>
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity
                 implementation="com.github.l00kahead.codebuddy.lifecycle.CodeBuddyStartupActivity"/>
         <toolWindow
-                id="Code Buddy"
+                id="CodeBuddy"
                 factoryClass="com.github.l00kahead.codebuddy.toolWindow.CodeBuddyToolWindowFactory"
                 icon="/icons/codeBuddyTool.svg"
                 anchor="right"

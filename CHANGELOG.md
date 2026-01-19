@@ -1,10 +1,10 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# code-buddy Changelog
+# Code Buddy Changelog
 
 ## [Unreleased]
 ### Added
-- Ongoing improvements and refinements
+- No unreleased changes yet
 
 ---
 
@@ -17,9 +17,6 @@
 - Tool window with controls to pause and resume the cat’s movement
 - Option to completely enable or disable the cat overlay
 - Automatic startup integration so the cat appears when a project opens
-
-### Changed
-- N/A
 
 ### Fixed
 - Corrected cat overlay positioning to stay aligned with the bottom of the IDE
