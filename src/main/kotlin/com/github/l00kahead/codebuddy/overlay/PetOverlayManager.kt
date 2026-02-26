@@ -16,7 +16,8 @@ object PetOverlayManager {
         val layeredPane = frame.rootPane.layeredPane
 
         val petLayer = PetLayer(service)
-        layeredPane.add(petLayer, JLayeredPane.POPUP_LAYER)
+        layeredPane.add(petLayer)
+        layeredPane.setLayer(petLayer, JLayeredPane.POPUP_LAYER)
         petLayer.attach(layeredPane)
     }
     @Suppress("unused")
