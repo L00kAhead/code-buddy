@@ -24,6 +24,7 @@ class CodeBuddyToolWindowFactory : ToolWindowFactory {
 
         val root = panel {
             row {
+                @Suppress("DialogTitleCapitalization")
                 label("Code Buddy").applyToComponent {
                     font = font.deriveFont(Font.BOLD)
                 }
