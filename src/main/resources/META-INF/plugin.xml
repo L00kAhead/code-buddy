@@ -13,6 +13,7 @@
                 factoryClass="com.github.l00kahead.codebuddy.toolWindow.CodeBuddyToolWindowFactory"
                 icon="/icons/codeBuddyTool.svg"
                 anchor="right"
+                doNotActivateOnStart="true"
         />
     </extensions>
 </idea-plugin>
